@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Home.unity
+    guid: 6fe0d1363588e9245a07f10ad15b98a3
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 5594d1208505cfe43bc06b85dde3c188
+  - enabled: 1
+    path: Assets/Scenes/TaskSelect.unity
+    guid: a13b7750b7d8c45488400fe194c818df
+  - enabled: 1
+    path: Assets/Scenes/Tasks/Gridshot.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Tasks/Kinggg.unity
+    guid: faff53bb7420f1d47816463bbab1adbc
+  - enabled: 1
+    path: Assets/Scenes/Tasks/Headshot.unity
+    guid: 541818b97e81d0f4e9e32a916f6fbab7
+  - enabled: 1
+    path: Assets/Scenes/Tasks/Sixshot.unity
+    guid: 7733bef100aed8147b7f16aa4ea4e9a1
+  - enabled: 1
+    path: Assets/Scenes/Tasks/Spidershot.unity
+    guid: 3ba7a75256ad50c4f8750bb12b0462b7
+  - enabled: 1
+    path: Assets/Scenes/FlickingTasks.unity
+    guid: abdb2da37c4f50d4da15f7f859840edb
+  - enabled: 1
+    path: Assets/Scenes/PrecisionTasks.unity
+    guid: 094d3001fc41a9947849fb070aec041d
+  - enabled: 1
+    path: Assets/Scenes/SpeedTasks.unity
+    guid: 522931b71e0191e4294355c98f5f5c81
+  - enabled: 1
+    path: Assets/Scenes/TrackingTasks.unity
+    guid: 82c5566f35c34f74080ebc2c4724a1fd
+  - enabled: 1
+    path: Assets/Scenes/Tasks/Entry.unity
+    guid: abdb7ed776476694f822ce3b28ccdcf1
+  - enabled: 1
+    path: Assets/Scenes/Tasks/Flickshot.unity
+    guid: 4ed318f9c95f675459a6e566a9b681ae
+  - enabled: 1
+    path: Assets/Scenes/Tasks/MovingTargetShot.unity
+    guid: 2159c2202517cce4ca01362d422a3165
+  - enabled: 1
+    path: Assets/Scenes/Tasks/MovingTargetShotRandom.unity
+    guid: f9431bc62ea8bbd4589d9380e7a41b5c
+  - enabled: 1
+    path: Assets/Scenes/Tasks/Multishot.unity
+    guid: c891c0cb83696bf4fb62832ae7a01e56
+  - enabled: 1
+    path: Assets/Scenes/Tasks/PrecisionCircle.unity
+    guid: 8023abfbdedaa9d48805fa0978291880
+  - enabled: 1
+    path: Assets/Scenes/Tasks/SingleFlickshot.unity
+    guid: e905afc651c5f3c4cae419069a63cf4a
+  - enabled: 1
+    path: Assets/Scenes/Tasks/Strafetrack.unity
+    guid: 74b3a30238a65ca41b09e218893a3435
+  - enabled: 1
+    path: Assets/Scenes/Tasks/StrafeTrack8D.unity
+    guid: 7ceec1e221976114593d73e15223f15f
+  - enabled: 1
+    path: Assets/Scenes/Tasks/StrafetrackDiag.unity
+    guid: e58844a82cd03b8499cd1f8e03c8a2bb
+  - enabled: 1
+    path: Assets/Scenes/Tasks/StrafetrackRan.unity
+    guid: 4ad7de987c03e9549b50eadcc1494924
+  - enabled: 1
+    path: Assets/Scenes/Tasks/ZapShot.unity
+    guid: 8290aa182ed3fba49a12fe389f284734
+  m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
