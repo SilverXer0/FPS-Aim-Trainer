@@ -23,27 +23,37 @@ public class StrafeTrackScorer : MonoBehaviour
     [Tooltip("Points per second of holding on target.")]
     public float pointsPerSecond = 10f;
 
-    [Header("Audio")]
-    [Tooltip("Play repeated ticks while holding on target (instead of just once).")]
-    [SerializeField] private bool playTickWhileOnTarget = false;
-    [Tooltip("Seconds between repeated tick sounds while holding on target.")]
-    [SerializeField] private float tickInterval = 0.15f;
+    [Header("Audio (continuous loop while tracking)")]
+    [Tooltip("Loopable clip that plays continuously while on target.")]
+    [SerializeField] private AudioClip trackingLoopClip;
+    [Range(0f, 1f)] [SerializeField] private float trackingLoopVolume = 0.6f;
 
-    private bool _wasOnTarget = false;
-    private float _tickTimer = 0f;
+    private AudioSource _loopSrc;      // dedicated looping source
+    private bool _onTarget;            // state this frame
 
+    // Scorekeeping
     private float _goodTime = 0f;
     private float _totalTime = 0f;
     private float _score = 0f;
-
     private bool _alreadyCalculated = false;
+
+    void Awake()
+    {
+        // Build a private AudioSource for the continuous loop
+        _loopSrc = gameObject.AddComponent<AudioSource>();
+        _loopSrc.clip = trackingLoopClip;
+        _loopSrc.loop = true;
+        _loopSrc.playOnAwake = false;
+        _loopSrc.spatialBlend = 0f;           // 2D
+        _loopSrc.volume = trackingLoopVolume;
+        _loopSrc.ignoreListenerPause = false; // so it pauses with the game if you pause AudioListener
+    }
 
     void Start()
     {
-        finalAccuracyText.gameObject.SetActive(false);
-
-        scoreText.text = $"Score: 0";
-        liveAccuracyText.text = $"Accuracy: 0.0%";
+        if (finalAccuracyText) finalAccuracyText.gameObject.SetActive(false);
+        if (scoreText) scoreText.text = "Score: 0";
+        if (liveAccuracyText) liveAccuracyText.text = "Accuracy: 0.0%";
     }
 
     void OnEnable()
@@ -54,73 +64,81 @@ public class StrafeTrackScorer : MonoBehaviour
     void OnDisable()
     {
         Timer.OnGameEnded -= OnTaskEnded;
+        StopLoop();
     }
 
     void Update()
     {
         if (Timer.GameEnded)
+        {
+            StopLoop();
             return;
+        }
 
         _totalTime += Time.deltaTime;
 
+        // Determine if we are "tracking" this frame: LMB held and ray hits the target sphere
         bool onTargetThisFrame = false;
-
         if (Input.GetMouseButton(0))
         {
             Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f));
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                if (hit.collider.gameObject == strafeSphere)
+                if (hit.collider && hit.collider.gameObject == strafeSphere)
                 {
-                    _goodTime += Time.deltaTime;
                     onTargetThisFrame = true;
+                    _goodTime += Time.deltaTime;
                 }
             }
         }
 
-        if (Input.GetMouseButton(0))
-        {
-            if (onTargetThisFrame && !_wasOnTarget)
-            {
-                AudioHub.Instance?.PlayHit();
-                _tickTimer = 0f;
-            }
+        // Start/stop the continuous loop exactly on state transitions
+        if (onTargetThisFrame && !_onTarget)
+            StartLoop();
+        else if (!onTargetThisFrame && _onTarget)
+            StopLoop();
 
-            if (onTargetThisFrame && playTickWhileOnTarget)
-            {
-                _tickTimer += Time.deltaTime;
-                if (_tickTimer >= tickInterval)
-                {
-                    AudioHub.Instance?.PlayHit(); 
-                    _tickTimer = 0f;
-                }
-            }
-        }
+        _onTarget = onTargetThisFrame;
 
-        _wasOnTarget = onTargetThisFrame;
-
+        // Scoring
         if (onTargetThisFrame)
         {
             _score += pointsPerSecond * Time.deltaTime;
-            scoreText.text = $"Score: {Mathf.FloorToInt(_score)}";
+            if (scoreText) scoreText.text = $"Score: {Mathf.FloorToInt(_score)}";
         }
 
-        float liveAccPercent = (_totalTime > 0f)
-            ? (_goodTime / _totalTime) * 100f
-            : 0f;
-
-        liveAccuracyText.text = $"Accuracy: {liveAccPercent:0.0}%";
+        // Live accuracy
+        float liveAccPercent = (_totalTime > 0f) ? (_goodTime / _totalTime) * 100f : 0f;
+        if (liveAccuracyText) liveAccuracyText.text = $"Accuracy: {liveAccPercent:0.0}%";
     }
 
     private void OnTaskEnded()
+{
+    if (_alreadyCalculated) return;
+    _alreadyCalculated = true;
+
+    float finalAcc = 0f;
+    if (_totalTime > 0f)
+        finalAcc = (_goodTime / _totalTime);
+
+    if (StrafeTrackStats.Instance != null)
+        StrafeTrackStats.Instance.OnTargetRatio01 = finalAcc;
+
+    finalAccuracyText.text = $"Final Accuracy: {finalAcc * 100f:0.0}%";
+    finalAccuracyText.gameObject.SetActive(true);
+    liveAccuracyText.gameObject.SetActive(false);
+}
+
+
+    private void StartLoop()
     {
-        if (_alreadyCalculated) return;
-        _alreadyCalculated = true;
+        if (_loopSrc && _loopSrc.clip && !_loopSrc.isPlaying)
+            _loopSrc.Play();
+    }
 
-        float finalAcc = (_totalTime > 0f) ? (_goodTime / _totalTime) * 100f : 0f;
-
-        finalAccuracyText.text = $"Final Accuracy: {finalAcc:0.0}%";
-        finalAccuracyText.gameObject.SetActive(true);
-        liveAccuracyText.gameObject.SetActive(false);
+    private void StopLoop()
+    {
+        if (_loopSrc && _loopSrc.isPlaying)
+            _loopSrc.Stop();
     }
 }

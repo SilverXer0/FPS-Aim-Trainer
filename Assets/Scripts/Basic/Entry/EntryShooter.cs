@@ -33,6 +33,7 @@ public class EntryShooter : MonoBehaviour
             FlickErrorTracker.Instance?.RegisterShot(null, farPoint);
         }
 
+        AudioHub.Instance?.PlayMiss();
         OnEntryMiss?.Invoke();
     }
 }

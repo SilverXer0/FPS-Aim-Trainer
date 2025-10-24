@@ -29,7 +29,9 @@ public class TargetShooter : MonoBehaviour
                 }
                 else
                 {
+                    AudioHub.Instance?.PlayMiss();
                     OnTargetMissed?.Invoke();
+                    
                 }
             }
             else

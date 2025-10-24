@@ -27,6 +27,7 @@ public class MultiShotShooter : MonoBehaviour
             }
             else
             {
+                AudioHub.Instance?.PlayMiss();
                 OnMiss?.Invoke(); 
             }
         }

@@ -20,18 +20,20 @@ public class ZapShooter : MonoBehaviour
             {
 
                 float reaction = Time.time - z.LastVisibleTime;
-  
+                AudioHub.Instance?.PlayHit();
                 z.Hit();
  
                 OnZapHit?.Invoke(reaction);
             }
             else
             {
+                AudioHub.Instance?.PlayMiss();
                 OnZapMisclick?.Invoke();
             }
         }
         else
         {
+            AudioHub.Instance?.PlayMiss();
             OnZapMisclick?.Invoke();
         }
     }

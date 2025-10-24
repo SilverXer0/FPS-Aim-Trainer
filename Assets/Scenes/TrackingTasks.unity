@@ -403,6 +403,7 @@ GameObject:
   - component: {fileID: 185846800}
   - component: {fileID: 185846799}
   - component: {fileID: 185846798}
+  - component: {fileID: 185846801}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -524,6 +525,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 185846796}
   m_CullTransparentMesh: 1
+--- !u!114 &185846801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185846796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c99919b8cde1aa44a93a6cf085bafb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &195507713
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,6 +549,7 @@ GameObject:
   - component: {fileID: 195507717}
   - component: {fileID: 195507716}
   - component: {fileID: 195507715}
+  - component: {fileID: 195507718}
   m_Layer: 5
   m_Name: StrafeTrack (Diagonal)
   m_TagString: Untagged
@@ -657,6 +671,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 195507713}
   m_CullTransparentMesh: 1
+--- !u!114 &195507718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195507713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c99919b8cde1aa44a93a6cf085bafb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &208605059
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,6 +1298,7 @@ GameObject:
   - component: {fileID: 565029268}
   - component: {fileID: 565029267}
   - component: {fileID: 565029266}
+  - component: {fileID: 565029269}
   m_Layer: 5
   m_Name: StrafeTrack Random
   m_TagString: Untagged
@@ -1393,6 +1420,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 565029264}
   m_CullTransparentMesh: 1
+--- !u!114 &565029269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565029264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c99919b8cde1aa44a93a6cf085bafb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &598773479
 GameObject:
   m_ObjectHideFlags: 0
@@ -1514,6 +1553,7 @@ GameObject:
   - component: {fileID: 661857593}
   - component: {fileID: 661857592}
   - component: {fileID: 661857591}
+  - component: {fileID: 661857594}
   m_Layer: 5
   m_Name: StrafeTrack8D
   m_TagString: Untagged
@@ -1635,6 +1675,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 661857589}
   m_CullTransparentMesh: 1
+--- !u!114 &661857594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661857589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c99919b8cde1aa44a93a6cf085bafb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &670010703
 GameObject:
   m_ObjectHideFlags: 0
@@ -1647,6 +1699,7 @@ GameObject:
   - component: {fileID: 670010707}
   - component: {fileID: 670010706}
   - component: {fileID: 670010705}
+  - component: {fileID: 670010708}
   m_Layer: 5
   m_Name: EntryTrack
   m_TagString: Untagged
@@ -1768,6 +1821,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 670010703}
   m_CullTransparentMesh: 1
+--- !u!114 &670010708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670010703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c99919b8cde1aa44a93a6cf085bafb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &731295946
 GameObject:
   m_ObjectHideFlags: 0
@@ -2830,6 +2895,7 @@ GameObject:
   - component: {fileID: 1715087855}
   - component: {fileID: 1715087854}
   - component: {fileID: 1715087853}
+  - component: {fileID: 1715087856}
   m_Layer: 5
   m_Name: StrafeTrack
   m_TagString: Untagged
@@ -2951,6 +3017,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1715087851}
   m_CullTransparentMesh: 1
+--- !u!114 &1715087856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715087851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c99919b8cde1aa44a93a6cf085bafb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1727014734
 GameObject:
   m_ObjectHideFlags: 0
