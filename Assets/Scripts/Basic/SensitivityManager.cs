@@ -37,6 +37,7 @@ public class SensitivityManager : MonoBehaviour
         currentSensitivity = PlayerPrefs.GetFloat(PrefKey, currentSensitivity);
         currentSensitivity = Mathf.Clamp(currentSensitivity, minSensitivity, maxSensitivity);
 
+        WriteGlobalHistoryPoint(currentSensitivity);
         // On startup, there hasn't been a change yet, so "old == new"
         lastSensitivityBeforeChange = currentSensitivity;
         lastSensitivityAfterChange  = currentSensitivity;
@@ -65,11 +66,12 @@ public class SensitivityManager : MonoBehaviour
         PlayerPrefs.SetFloat(PrefKey, newSens);
         PlayerPrefs.Save();
 
+        WriteGlobalHistoryPoint(newSens);
         OnSensitivityChanged?.Invoke(newSens);
         OnSensitivityChangedDetailed?.Invoke(oldSens, newSens);
 
-        WriteGlobalHistoryPoint(newSens);
-    }
+        
+    }   
 
     public void BumpSensitivity(float delta)
     {
